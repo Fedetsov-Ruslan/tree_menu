@@ -1,0 +1,31 @@
+/* Основные стили для скрытия подменю */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  padding-left: 20px;
+}
+
+.submenu.active {
+  display: block;
+}
+
+.toggle {
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: inherit; /* Унаследовать цвет от родителя, если нужно */
+}

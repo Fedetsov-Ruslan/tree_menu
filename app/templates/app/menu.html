@@ -1,0 +1,34 @@
+
+{%load static%}
+<ul>
+    {% for node in menu %}
+        <li>
+            <span class="toggle" onclick="toggleMenu('{{ node.item.id }}')">
+                {% if node.children %}
+                    <span class="icon">+</span>
+                {% endif %}
+            </span>
+            <a href="{{ node.item.url }}" class="menu-item">{{ node.item.name }}</a>
+            {% if node.children %}
+                <ul id="menu-{{ node.item.id }}" class="submenu">
+                    {% include 'app/menu_children.html' with menu=node.children %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+
+{% load menu_render%}
+<!DOCTYPE html>
+<html lang="ru">
+    {% load static%}
+  <head>
+    <meta charset="utf-8">
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+       
+    <title> main page</title>
+  </head>
+    <body>
+        {% draw_menu 'first menu' %}
+        {% draw_menu 'third menu' %}
+        {% draw_menu 'five menu' %}
+
+        <script src="{% static 'js/menu.js' %}"></script>
+    </body>
+</html>
+  
+
+
+
+  
+  
+
+
+

@@ -1,0 +1,45 @@
+services:
+  web:
+    image: djangomenubuilder
+    container_name: djangomenubuilder
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: ["/app/entrypoint.sh"]
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - menu_network
+
+  db:
+    image: postgres
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=tree_menu
+    ports:
+      - "5432:5432"
+    networks:
+      - menu_network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-2
+    volumes:
+      - ./app/nginx.conf:/nginx/nginx.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+    networks:
+      - menu_network
+
+networks:
+  menu_network:
+    driver: bridge
